@@ -1,0 +1,201 @@
+/* Reset general mejorado */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.2s ease-in-out; /* Transiciones suaves */
+}
+
+/* Botón flotante mejorado */
+.chat-button {
+    position: fixed;
+    bottom: 30px; /* Aumentado el margen inferior */
+    right: 30px; /* Aumentado el margen derecho */
+    background: linear-gradient(135deg, #4CAF50, #2E7D32); /* Verde profesional */
+    color: white;
+    width: 70px; /* Aumentado el tamaño */
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px; /* Aumentado el tamaño de la fuente */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border: none;
+    z-index: 10000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor del chatbot mejorado */
+#chat-container {
+    position: fixed;
+    bottom: 100px; /* Aumentado el margen inferior */
+    right: 30px; /* Aumentado el margen derecho */
+    width: 380px; /* Aumentado el ancho */
+    max-width: 95%;
+    background: #f8f8f8;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 10000;
+}
+
+/* Para móviles ocupa toda la pantalla */
+@media (max-width: 600px) {
+    #chat-container {
+        width: 100%;
+        bottom: 0;
+        right: 0;
+        max-width: none;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+/* Mostrar/Ocultar el chatbot */
+.chat-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.chat-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    pointer-events: none;
+}
+
+/* Cabecera del chat mejorada */
+.chat-header {
+    background: linear-gradient(135deg, #00BCD4, #0097A7); /* Azul turquesa profesional */
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg) scale(1.2);
+}
+
+/* Cuerpo del chat mejorado */
+.chat-body {
+    height: 350px; /* Aumentado el tamaño */
+    overflow-y: auto;
+    padding: 20px;
+    background: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Para móviles, ajustamos mejor el tamaño */
+@media (max-width: 600px) {
+    .chat-body {
+        height: 75%;
+    }
+}
+
+/* Mensajes del chat mejorados */
+.bot-message, .user-message {
+    padding: 15px 20px;
+    border-radius: 25px;
+    margin: 10px 0;
+    max-width: 85%;
+    word-wrap: break-word;
+    font-size: 16px;
+    line-height: 1.7;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bot-message {
+    background: #e0f7fa; /* Azul claro */
+    align-self: flex-start;
+    color: #00838f;
+}
+
+.user-message {
+    background: #e8f5e9; /* Verde claro */
+    align-self: flex-end;
+    color: #388e3c;
+    text-align: right;
+}
+
+/* Pie del chat mejorado */
+.chat-footer {
+    display: flex;
+    padding: 15px;
+    background: #fff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top: 1px solid #eee;
+}
+
+.chat-footer input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    background: #f5f5f5;
+}
+
+.chat-footer button {
+    margin-left: 12px;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32); /* Verde profesional */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.4s ease;
+}
+
+.chat-footer button:hover {
+    background: linear-gradient(135deg, #2E7D32, #1B5E20);
+}
+
+/* Media queries para tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+    #chat-container {
+        width: 450px;
+        max-height: 700px;
+    }
+}
+
+/* Media queries para TV */
+@media (min-width: 1025px) and (min-height: 1080px) {
+    #chat-container {
+        width: 550px;
+        max-height: 800px;
+    }
+
+    .chat-button {
+        width: 80px;
+        height: 80px;
+        font-size: 36px;
+    }
+}
