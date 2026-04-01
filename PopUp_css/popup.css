@@ -1,0 +1,166 @@
+.popup-container {
+    display: flex;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffd6e5, #c2ebfc, #b3f0ff, #cce0e8, #bbf79f,#f38078,#cd8fda,#f1ff71,#8fc9a2,#ffaa48);
+    background-size: 400% 400%;
+    animation: gradientAnimation 12s ease infinite, gentlePulse 4s ease-in-out infinite;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    padding: 20px; /* Añadido padding para evitar que el contenido toque los bordes en móviles */
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes gentlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.005); }
+}
+
+.popup-content {
+    background-color: rgba(233, 230, 230, 0.95);
+    padding: 20px; /* Reducido el padding para móviles */
+    border-radius: 15px; /* Reducido el border-radius para móviles */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Reducida la sombra para móviles */
+    width: 95%; /* Aumentado el ancho para móviles */
+    max-width: 600px; /* Reducido el max-width para móviles */
+    position: relative;
+    animation: slideIn 0.6s ease-out, float 4s ease-in-out infinite;
+    transition: transform 0.3s ease;
+    border: 3px solid transparent;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+#popup-title {
+    text-align: center;
+    margin-bottom: 20px; /* Reducido el margin-bottom para móviles */
+    color: #ff6b6b;
+    font-size: 1.8em; /* Reducido el font-size para móviles */
+    animation: titleColorShift 5s infinite alternate;
+}
+
+@keyframes titleColorShift {
+    0% { color: #ff6b6b; }
+    50% { color: #4ecdc4; }
+    100% { color: #5044ff; }
+}
+
+#popup-body p, #popup-body p1, #popup-body li {
+    padding-left: 20px; /* Reducido el padding-left para móviles */
+    font-size: 1em; /* Reducido el font-size para móviles */
+    color: #000000;
+    transition: transform 0.3s ease;
+}
+
+#popup-body li:hover {
+    transform: translateX(5px); /* Reducido el translateX para móviles */
+}
+
+.close-popup {
+    position: absolute;
+    top: 15px; /* Reducido el top para móviles */
+    right: 15px; /* Reducido el right para móviles */
+    color: #ff0000;
+    animation: spinClose 4s infinite;
+    transition: all 0.3s ease;
+    font-size: 1.2em; /* Reducido el font-size para móviles */
+}
+
+@keyframes spinClose {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px) rotate(2deg); /* Reducidos los valores para móviles */
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.tab-container {
+    width: 100%;
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px; /* Reducido el margin-bottom para móviles */
+    flex-wrap: wrap; /* Permitir que los botones se envuelvan */
+}
+
+.tab-button {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 8px 15px; /* Reducido el padding para móviles */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5px; /* Añadido margin-bottom para separar los botones en móviles */
+}
+
+.tab-button.active {
+    background-color: #58add1;
+    border-radius: 20px;
+    animation: buttonactiveColorShift 5s infinite alternate; /* Agregamos la animación */
+}
+
+@keyframes buttonactiveColorShift {
+    0% { background-color: #ff6b6b; }
+    25% { background-color: #f7f456; }
+    50% { background-color: #fa79e4; }
+    75% { background-color: #4ecdc4; }
+    100% { background-color: #6d64ee; }
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content iframe {
+    width: 100%;
+    border-radius: 30px;
+    max-width: 100%; /* Asegura que el iframe se ajuste al ancho del contenedor */
+    height: auto; /* Permite que la altura se ajuste proporcionalmente */
+    aspect-ratio: 16 / 9; /* Mantiene la relación de aspecto 16:9 */
+}
+
+/* Media Query para dispositivos móviles (ancho máximo de 768px) */
+@media (max-width: 768px) {
+    .popup-content {
+        padding: 15px;
+    }
+
+    #popup-title {
+        font-size: 1.5em;
+    }
+
+    #popup-body p, #popup-body p1, #popup-body li {
+        font-size: 0.9em;
+    }
+
+    .tab-button {
+        padding: 6px 12px;
+    }
+}
